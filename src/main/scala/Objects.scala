@@ -1,5 +1,4 @@
 // Objects.scala
-
 class Person(name: String, age: Int) {
   val fullName: String = name
   val personAge: Int = age

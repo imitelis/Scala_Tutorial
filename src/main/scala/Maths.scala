@@ -1,5 +1,4 @@
-// Math.scala
-
+// Maths.scala
 object Maths {
   val Pi: Double = scala.math.Pi
   val E: Double = scala.math.E
