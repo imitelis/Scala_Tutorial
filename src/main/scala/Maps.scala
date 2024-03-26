@@ -2,6 +2,8 @@
 val emptyMap: Map[String, Int] = Map.empty
 val map: Map[String, Int] = Map("one" -> 1, "two" -> 2, "three" -> 3)
 
+val defaultMap = Map("a" -> 1, "b" -> 2).withDefaultValue(-1)
+
 object MapOperations {
   def main(): Unit = {
     val value: Int = map("two")
@@ -23,6 +25,7 @@ object MapOperations {
 
     val mergedMap = map ++ Map("four" -> 4, "five" -> 5)
 
+    println(defaultMap("c"))
     println(s"Value associated with 'two': $value")
     println(s"Option value associated with 'three': $valueOption")
     println(s"Updated map: $updatedMap")

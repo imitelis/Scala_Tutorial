@@ -8,7 +8,7 @@ object LazyValue {
 
     def showme(args: Array[String]): Unit = {
         args.foreach(println)
-        println("starting")
+        println("starting...")
 
         println("expensive:")
         println(expensive)

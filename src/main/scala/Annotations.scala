@@ -1,5 +1,5 @@
 // Define a simple annotation
-class Author(name: String, year: Int) extends scala.annotation.StaticAnnotation
+class Author(val name: String, val year: Int) extends scala.annotation.StaticAnnotation
 
 // Annotate a class with the Author annotation
 @Author(name = "John Doe", year = 2022)
@@ -14,9 +14,15 @@ class MyClass {
 object Annotations {
   val obj = new MyClass
 
-  val classAnnotation = obj.getClass.getAnnotation(classOf[Author])
-  println(s"Class author: ${classAnnotation.name}, year: ${classAnnotation.year}")
+  // class-level annotation
+  val classAnnotation: Option[Author] =
+    obj.getClass.getAnnotations
+      .find(_.annotationType() == classOf[Author])
+      .map(_.asInstanceOf[Author])
 
-  val methodAnnotation = classOf[MyClass].getMethod("myMethod").getAnnotation(classOf[Author])
-  println(s"Method author: ${methodAnnotation.name}, year: ${methodAnnotation.year}")
+  // method-level annotation
+  val methodAnnotation: Option[Author] =
+    classOf[MyClass].getMethod("myMethod").getAnnotations
+      .find(_.annotationType() == classOf[Author])
+      .map(_.asInstanceOf[Author])
 }
