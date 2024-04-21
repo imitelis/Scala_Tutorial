@@ -2,18 +2,16 @@
 import scala.math.pow
 
 object LazyValue {
-    lazy val expensive: Double = {
-        pow(43, 232) * 12
+    // Define a lazy value
+    lazy val lazyValue: Int = {
+        println("Initializing lazyValue")  // Print a message to indicate lazy value initialization
+        42  // Return the value
     }
 
     def showme(args: Array[String]): Unit = {
         args.foreach(println)
-        println("starting...")
-
-        println("expensive:")
-        println(expensive)
-
-        println("expensive again:")
-        println(expensive)
+        // Access the lazy value
+        println("Accessing lazyValue: " + lazyValue)  // Output: Initializing lazyValue, Accessing lazyValue: 42
+        println("Accessing lazyValue again: " + lazyValue)  // Output: Accessing lazyValue again: 42
     }
 }
